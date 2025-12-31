@@ -1,0 +1,62 @@
+<div *ngIf="destination" class="container mt-4">
+  <!-- Create Trip Itinerary Button -->
+  <div class="d-flex justify-content-center mt-4 mb-1">
+    <button class="btn btn-success" (click)="createItinerary()">
+      <i class="fas fa-plus"></i> Create Trip Itinerary
+    </button>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8">
+      <img [src]=" 'http://localhost:3000' +currentImage" class="img-fluid" alt="{{ destination.title }}">
+      <div class="mt-3">
+        <h2 class="title-label">Destination Title</h2>
+        <h2 class="destination-title">{{ destination.title }}</h2>
+      </div>
+      <div class="mt-3">
+        <h3 class="summary-label">Summary</h3>
+        <p class="destination-summary">{{ destination.summary }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Reviews</h3>
+      <div class="reviews-container mb-3">
+        <div *ngFor="let review of destination.reviews" class="review-box p-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <strong>{{ review.username }}</strong>
+            <span class="badge bg-secondary">{{ review.rating }}/5</span>
+          </div>
+          <p class="mt-2 mb-0">{{ review.comment }}</p>
+        </div>
+      </div>
+
+      <!-- Review Form for Logged-In Users -->
+      <div *ngIf="isLoggedIn" class="mt-4">
+        <h4>Leave a Review</h4>
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()">
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <select id="rating" class="form-select" formControlName="rating">
+              <option *ngFor="let r of [1, 2, 3, 4, 5]" [value]="r">{{ r }}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea id="comment" class="form-control" formControlName="comment" rows="3" placeholder="Write your review..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="reviewForm.invalid">Submit Review</button>
+        </form>
+
+        <!-- Success and Error Messages -->
+        <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>

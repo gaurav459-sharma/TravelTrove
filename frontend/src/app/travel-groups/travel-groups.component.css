@@ -1,0 +1,47 @@
+.create-form-container {
+  position: relative;
+  z-index: 10; /* Ensure the form is above other content */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Limit the width of the form */
+  margin: 0 auto; /* Center the form */
+}
+
+.card {
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #555;
+}
+
+.btn-primary, .btn-success {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+}
+
+.mygroupbg{
+  background-color: #7b7b7a;
+  color: white;
+}

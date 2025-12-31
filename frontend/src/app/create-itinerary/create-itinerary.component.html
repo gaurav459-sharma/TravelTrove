@@ -1,0 +1,53 @@
+<div class="container d-flex justify-content-center align-items-center vh-80">
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()" class="w-50 bg-light p-4 rounded shadow">
+    <h2 class="text-center mb-4" style="color: #007bff;">Create Trip Itinerary</h2>
+
+    <div *ngIf="successMessage" class="alert alert-success" role="alert">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+
+  
+
+    <div class="mb-3">
+      <label for="destinationName" class="form-label">Destination Name</label>
+      <input id="destinationName" formControlName="destinationName" type="text" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="duration" class="form-label">Duration (days)</label>
+      <input id="duration" formControlName="duration" type="number" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Activities</label>
+      <div *ngFor="let activity of activitiesList" class="form-check">
+        <input class="form-check-input" type="checkbox" [value]="activity" (change)="onActivityChange($event)">
+        <label class="form-check-label">
+          {{ activity }}
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="lodging" class="form-label">Lodging</label>
+      <select id="lodging" formControlName="lodging" class="form-select">
+        <option *ngFor="let option of lodgingOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="dining" class="form-label">Dining</label>
+      <select id="dining" formControlName="dining" class="form-select">
+        <option *ngFor="let option of diningOptions" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary w-100 " [disabled]="tripForm.invalid">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,57 @@
+.trip-list-wrapper {
+  min-height: calc(100vh - 112px);
+  background-image: url('../../assets/createguide.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+.heading-container {
+  text-align: center; 
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.trip-heading {
+  color: #007bff; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  margin: 0 auto; 
+}
+
+.trip-heading::before,
+.trip-heading::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 4px;
+  background-color: #007bff; /* Bootstrap primary color */
+  bottom: 0;
+}
+
+.trip-heading::before {
+  left: -60px; /* Adjust to position the line */
+}
+
+.trip-heading::after {
+  right: -60px; /* Adjust to position the line */
+}
+
+.card {
+  background-color: rgba(247, 234, 201, 0.9); /* Add a slight white background for readability */
+  border-radius: 8px;
+  transition: transform 0.2s;
+  width: 100%; /* Ensure the card takes full width of the column */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  color: #007bff;
+}

@@ -1,0 +1,22 @@
+.card {
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-title {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: #555;
+  }
+  
+  .btn-primary, .btn-success, .btn-secondary, .btn-info, .btn-danger {
+    border-radius: 20px;
+  }

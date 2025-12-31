@@ -1,0 +1,92 @@
+
+
+<div class="container mt-4">
+  <h2 class="text-center">Update Destination Guide</h2>
+  <div class="d-flex justify-content-center">
+    <form [formGroup]="guideForm" (ngSubmit)="confirmOnsubmit()" class="w-50">
+      <div class="mb-3">
+        <label for="destinationName" class="form-label">Destination Name</label>
+        <input type="text" id="destinationName" class="form-control" formControlName="destinationName" placeholder="Enter destination name">
+        <div *ngIf="guideForm.get('destinationName')?.invalid && guideForm.get('destinationName')?.touched" class="text-danger">
+          destination name is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter a title">
+        <div *ngIf="guideForm.get('title')?.invalid && guideForm.get('title')?.touched" class="text-danger">
+          title is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="summary" class="form-label">Description</label>
+        <textarea id="summary" class="form-control" formControlName="summary" rows="3" placeholder="Enter destination summary"></textarea>
+        <div *ngIf="guideForm.get('summary')?.invalid && guideForm.get('summary')?.touched" class="text-danger">
+          Description is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="photos" class="form-label">Upload Images</label>
+        <input type="file" id="photos" class="form-control" (change)="onFileSelect($event)" multiple>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="guideForm.invalid">Update Guide</button>
+    </form>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<!-- <div class="modal fade" id="openId" tableindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">
+          <i class="bi bi-pencil-square"></i> Update a Destination Guide
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="guideForm" (ngSubmit)="confirmOnsubmit()" class="w-50">
+          <div class="mb-3">
+            <label for="destinationName" class="form-label">Destination Name</label>
+            <input type="text" id="destinationName" class="form-control" formControlName="destinationName"
+              placeholder="Enter destination name">
+            <div *ngIf="guideForm.get('destinationName')?.invalid && guideForm.get('destinationName')?.touched"
+              class="text-danger">
+              destination name is required.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter a title">
+            <div *ngIf="guideForm.get('title')?.invalid && guideForm.get('title')?.touched" class="text-danger">
+              title is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="summary" class="form-label">Description</label>
+            <textarea id="summary" class="form-control" formControlName="summary" rows="3"
+              placeholder="Enter destination summary"></textarea>
+            <div *ngIf="guideForm.get('summary')?.invalid && guideForm.get('summary')?.touched" class="text-danger">
+              Description is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="photos" class="form-label">Upload Images</label>
+            <input type="file" id="photos" class="form-control" (change)="onFileSelect($event)" multiple>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="guideForm.invalid">Update Guide</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,48 @@
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: #555;
+  }
+  .text-center {
+    width: 100%;
+  }
+  
+  .input-group {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .card-hover {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+ .deleteButton{
+  background-color: rgb(184, 61, 61);
+ }
+ .updateButton{
+  background-color: rgb(239, 203, 62);
+
+ }
+ .explorNow{
+  background-color: rgb(100, 157, 201);
+ }
+
+ .createGuide{
+  background-color: rgb(100, 157, 201);
+
+ }
+ .guideheading{
+  color:#3d405b;
+ }

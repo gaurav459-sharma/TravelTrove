@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow" style="width: 50%; max-width: 400px;">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4">Join Us!</h2>
+
+      <!-- Alert for Success or Error Feedback -->
+      <div *ngIf="successMessage" class="alert alert-success" role="alert">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
+
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <!-- Username Field with Validation Feedback -->
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter username">
+          <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="text-danger">
+            Username is required.
+          </div>
+        </div>
+
+        <!-- Email Field with Validation Feedback -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+          <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">
+            Valid email is required.
+          </div>
+        </div>
+
+        <!-- Password Field with Validation Feedback -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" formControlName="password" placeholder="Enter password">
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+              {{ showPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+          <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">
+            Password is required.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">Sign Up</button>
+      </form>
+
+      <!-- Link to Login Page -->
+      <div class="text-center mt-3">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>

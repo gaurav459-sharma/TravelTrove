@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="heading-container text-center mb-4">
+    <h2 class="favourite-heading">Your Favorite Destinations</h2>
+  </div>
+  
+  <div class="row" *ngIf="favoriteDestinations.length > 0">
+    <div class="col-md-4" *ngFor="let destination of favoriteDestinations">
+      <div class="card mb-4 shadow-sm card-hover position-relative">
+        <img [src]="'http://localhost:3000' + destination.photos[0]" class="card-img-top" alt="{{ destination.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ destination.title }}</h5>
+          <p class="card-text text-truncate">{{ destination.summary }}</p>
+          <div class="d-flex justify-content-between">
+            <a (click)="viewDetails(destination._id)" class="btn btn-primary me-2">Learn More</a>
+            <!-- Optionally add a remove from favorites button -->
+            <button class="btn btn-danger btn-sm" (click)="removeFromFavorites(destination._id)">
+              <i class="bi bi-heart-fill"></i> Remove
+            </button>
+          </div>
+        </div>
+     
+      </div>
+    </div>
+  </div>
+  <div *ngIf="favoriteDestinations.length === 0" class="text-center mt-5">
+    <i class="bi bi-heart display-3 text-muted"></i>
+    <h3 class="mt-3 text-muted">No Favorite Destinations</h3>
+    <p class="text-muted">You haven't added any destinations to your favorites yet.</p>
+  </div>
+</div>

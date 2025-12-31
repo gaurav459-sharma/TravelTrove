@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <!-- Success Message for Joining a Group -->
+  <div *ngIf="successsJoinMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ successsJoinMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+    <div class="d-flex align-items-center">
+      <button class="btn btn-outline-secondary me-3 mygroupbg" (click)="showMyGroups()">My Groups</button>
+      <h2 class="text-center mb-0 text-primary">Travel Groups</h2>
+    </div>
+    <button class="btn mygroupbg" data-bs-toggle="modal" data-bs-target="#createGroupModal">Create Group</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="createGroupModal" tabindex="-1" aria-labelledby="createGroupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createGroupModalLabel">Create New Group</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="createGroup()" #groupForm="ngForm">
+            <div class="form-group mb-3">
+              <label for="groupName">Group Name</label>
+              <input type="text" id="groupName" class="form-control" [(ngModel)]="newGroupName" name="name" required #name="ngModel" placeholder="Enter group name">
+              <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                Group name is required.
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="groupDescription">Description</label>
+              <textarea id="groupDescription" class="form-control" [(ngModel)]="newGroupDescription" name="description" required #description="ngModel" placeholder="Enter group description"></textarea>
+              <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+                Description is required.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="groupForm.invalid">Create</button>
+          </form>
+          <div *ngIf="successsMessage" class="alert alert-success mt-2" role="alert">
+            Group created successfully!
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-2" role="alert">
+            There was an error creating the group. Please try again.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let group of travelGroups">
+      <div class="card mb-4 shadow-sm" style="background-color: #f8f9fa;">
+        <div class="card-body">
+          <h5 class="card-title">{{ group.groupName }}</h5>
+          <p class="card-text">{{ group.description }}</p>
+          <p class="text-muted">Created by: {{ group.createdBy }}</p>
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-primary btn-sm" (click)="joinGroup(group)">
+              <i class="bi bi-person-plus"></i> Join
+            </button>
+            <button class="btn btn-secondary btn-sm" (click)="chatWithGroup(group)">
+              <i class="bi bi-chat-dots"></i> Chat
+            </button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

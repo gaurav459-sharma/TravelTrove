@@ -1,0 +1,49 @@
+<div class="create-guide-wrapper bglight">
+<div class="container mt-4">
+  <div class="heading-container text-center mb-4">
+    <h2 class="text-center guide-heading">Create Destination Guide</h2>
+  </div>
+  
+  <div class="d-flex justify-content-center">
+    <form [formGroup]="guideForm" (ngSubmit)="onSubmit()" class="w-50">
+      <div class="mb-3">
+        <label for="destinationName" class="form-label text-dark fw-bold">Destination Name</label>
+        <input type="text" id="destinationName" class="form-control" formControlName="destinationName" placeholder="Enter destination name">
+        <div *ngIf="guideForm.get('destinationName')?.invalid && guideForm.get('destinationName')?.touched" class="text-danger">
+          destination name is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label text-dark fw-bold">Title</label>
+        <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter a title">
+        <div *ngIf="guideForm.get('title')?.invalid && guideForm.get('title')?.touched" class="text-danger">
+          title is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="summary" class="form-label text-dark fw-bold">Description</label>
+        <textarea id="summary" class="form-control" formControlName="summary" rows="3" placeholder="Enter destination summary"></textarea>
+        <div *ngIf="guideForm.get('summary')?.invalid && guideForm.get('summary')?.touched" class="text-danger">
+          Description is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="photos" class="form-label text-dark fw-bold">Upload Images</label>
+        <input type="file" id="photos" class="form-control" (change)="onFileSelect($event)" multiple>
+        <div *ngIf="fileError" class="text-danger">
+          At least one image is required.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="guideForm.invalid || !selectedFiles.length">Create Guide</button>
+    </form>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+    {{ errorMessage }}
+  </div>
+</div>
+</div>
