@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/App.js" // Route all requests to App.js
+      "dest": "/App.js" 
     }
   ]
 }
